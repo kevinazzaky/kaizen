@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+@'
+# Kaizen Website
 
-## Getting Started
+Website landing page untuk perusahaan Kaizen yang bergerak di bidang maintenance, service, dan preventive maintenance kitchen equipment.
 
-First, run the development server:
+Project ini dibuat menggunakan Next.js, React, TypeScript, dan Tailwind CSS dengan pendekatan pengembangan incremental dan agile.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- ESLint
+- MySQL / MariaDB Laragon, untuk tahap database nanti
+- Prisma ORM, untuk tahap database nanti
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Goal
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Membuat landing page profesional untuk memperkenalkan layanan Kaizen kepada customer seperti restoran, hotel, cafe, catering, bakery, cloud kitchen, food court, dan bisnis F&B lainnya.
 
-## Learn More
+Website ini akan dikembangkan secara bertahap, dimulai dari landing page statis terlebih dahulu, lalu dilanjutkan dengan contact form, database, dan fitur tambahan lainnya.
 
-To learn more about Next.js, take a look at the following resources:
+## Development Method
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Project ini menggunakan metode incremental dan agile.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Setiap fitur dikembangkan melalui:
 
-## Deploy on Vercel
+1. Issue
+2. Branch
+3. Commit
+4. Pull Request
+5. Merge
+6. Clean up branch
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Git Workflow
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Project ini menggunakan flow:
+
+```txt
+feature/* → develop → main
