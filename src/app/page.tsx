@@ -1,12 +1,8 @@
-import { Navbar } from "@/components/layout/navbar";
-import { HeroSection } from "@/components/sections/HeroSections";
+import { Navbar } from "@/components/layout/Navbar";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { HeroSection } from "@/components/sections/HeroSection";
 
 const sections = [
-  {
-    id: "tentang-kami",
-    title: "Tentang Kami",
-    description: "Section profil perusahaan Kaizen.",
-  },
   {
     id: "layanan",
     title: "Layanan",
@@ -29,6 +25,7 @@ export default function Home() {
     <main className="min-h-screen bg-white text-slate-900">
       <Navbar />
       <HeroSection />
+      <AboutSection />
 
       {sections.map((section) => (
         <section
