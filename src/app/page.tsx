@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
@@ -7,12 +8,13 @@ const sections = [
   {
     id: "galeri",
     title: "Galeri",
-    description: "Section dokumentasi pekerjaan.",
+    description:
+      "Dokumentasi pekerjaan akan ditambahkan setelah foto proyek tersedia.",
   },
   {
     id: "kontak",
     title: "Kontak",
-    description: "Section kontak dan CTA WhatsApp.",
+    description: "Hubungi Kaizen untuk konsultasi kebutuhan kitchen equipment.",
   },
 ];
 
@@ -45,6 +47,8 @@ export default function Home() {
           </div>
         </section>
       ))}
+
+      <Footer />
     </main>
   );
 }
