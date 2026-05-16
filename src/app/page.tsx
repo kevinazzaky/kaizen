@@ -1,13 +1,9 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { ServicesSection } from "@/components/sections/ServicesSection";
 
 const sections = [
-  {
-    id: "layanan",
-    title: "Layanan",
-    description: "Section daftar layanan maintenance kitchen equipment.",
-  },
   {
     id: "galeri",
     title: "Galeri",
@@ -26,6 +22,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutSection />
+      <ServicesSection />
 
       {sections.map((section) => (
         <section
