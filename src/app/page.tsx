@@ -1,11 +1,7 @@
 import { Navbar } from "@/components/layout/navbar";
+import { HeroSection } from "@/components/sections/HeroSections";
 
 const sections = [
-  {
-    id: "home",
-    title: "Home",
-    description: "Hero section akan dibuat pada issue berikutnya.",
-  },
   {
     id: "tentang-kami",
     title: "Tentang Kami",
@@ -32,6 +28,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <Navbar />
+      <HeroSection />
 
       {sections.map((section) => (
         <section
@@ -44,9 +41,9 @@ export default function Home() {
               Kaizen
             </p>
 
-            <h1 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
               {section.title}
-            </h1>
+            </h2>
 
             <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
               {section.description}
