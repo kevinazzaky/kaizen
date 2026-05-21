@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { ServiceAreaSection } from "@/components/sections/ServiceAreaSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 
 const sections = [
@@ -27,6 +28,7 @@ export default function Home() {
       <AboutSection />
       <ServicesSection />
       <BenefitsSection />
+      <ServiceAreaSection />
 
       {sections.map((section) => (
         <section
