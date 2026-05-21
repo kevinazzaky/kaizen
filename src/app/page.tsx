@@ -1,16 +1,13 @@
-import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
 import { AboutSection } from "@/components/sections/AboutSection";
+import { BenefitsSection } from "@/components/sections/BenefitsSection";
+import { GallerySection } from "@/components/sections/GallerySection";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { ServiceAreaSection } from "@/components/sections/ServiceAreaSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 
 const sections = [
-  {
-    id: "galeri",
-    title: "Galeri",
-    description:
-      "Dokumentasi pekerjaan akan ditambahkan setelah foto proyek tersedia.",
-  },
   {
     id: "kontak",
     title: "Kontak",
@@ -25,6 +22,9 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
+      <BenefitsSection />
+      <ServiceAreaSection />
+      <GallerySection />
 
       {sections.map((section) => (
         <section
