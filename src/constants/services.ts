@@ -29,9 +29,4 @@ export const services = [
     description:
       "Program perawatan terjadwal untuk mengurangi risiko kerusakan mendadak dan membantu memperpanjang umur pakai kitchen equipment.",
   },
-  {
-    title: "Emergency Service",
-    description:
-      "Bantuan cepat untuk menangani kendala equipment yang mengganggu operasional dapur agar bisnis dapat kembali berjalan dengan baik.",
-  },
 ];
