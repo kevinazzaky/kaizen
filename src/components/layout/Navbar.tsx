@@ -1,40 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { company } from "@/constants/company";
 import { navigationItems } from "@/constants/navigation";
 import { createWhatsappLink } from "@/lib/whatsapp";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   const whatsappLink = createWhatsappLink(
     company.whatsappNumber,
     company.whatsappMessage,
   );
 
-  useEffect(() => {
-    function handleScroll() {
-      setIsScrolled(window.scrollY > 30);
-    }
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <header className="fixed left-0 top-0 z-50 w-full px-4 pt-4">
-      <div
-        className={`mx-auto flex h-18 max-w-7xl items-center justify-between rounded-full border px-5 shadow-sm backdrop-blur-2xl transition-all duration-300 sm:px-6 ${
-          isScrolled
-            ? "border-slate-200/70 bg-white/75 text-slate-950"
-            : "border-white/15 bg-white/10 text-white"
-        }`}
-      >
+    <header className="absolute left-0 top-0 z-50 w-full px-4 pt-4 lg:fixed">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between rounded-full border border-white/15 bg-white/10 px-5 text-white shadow-sm backdrop-blur-2xl transition-all duration-300 sm:px-6">
         <a href="#" className="flex items-center gap-3">
           <div className="relative h-11 w-11 overflow-hidden rounded-full bg-black shadow-sm">
             <Image
@@ -50,11 +32,7 @@ export function Navbar() {
             <p className="text-sm font-black leading-none sm:text-base">
               {company.name}
             </p>
-            <p
-              className={`mt-1 hidden text-xs sm:block ${
-                isScrolled ? "text-slate-500" : "text-white/65"
-              }`}
-            >
+            <p className="mt-1 hidden text-xs text-white/65 sm:block">
               Kitchen Equipment Specialist
             </p>
           </div>
@@ -65,11 +43,7 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className={`text-sm font-semibold transition ${
-                isScrolled
-                  ? "text-slate-600 hover:text-[var(--color-blue)]"
-                  : "text-white/75 hover:text-[var(--color-accent)]"
-              }`}
+              className="text-sm font-semibold text-white/75 transition hover:text-[var(--color-accent)]"
             >
               {item.label}
             </a>
@@ -88,35 +62,21 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((current) => !current)}
-          className={`rounded-full border px-4 py-2 text-sm font-semibold transition lg:hidden ${
-            isScrolled
-              ? "border-slate-300 text-slate-950"
-              : "border-white/20 text-white"
-          }`}
+          className="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition lg:hidden"
         >
           Menu
         </button>
       </div>
 
       {isOpen && (
-        <div
-          className={`mx-auto mt-3 max-w-7xl rounded-3xl border px-5 py-5 shadow-lg backdrop-blur-2xl lg:hidden ${
-            isScrolled
-              ? "border-slate-200 bg-white/90 text-slate-950"
-              : "border-white/15 bg-[var(--color-primary)]/80 text-white"
-          }`}
-        >
+        <div className="mx-auto mt-3 max-w-7xl rounded-3xl border border-white/15 bg-[var(--color-primary)]/90 px-5 py-5 text-white shadow-lg backdrop-blur-2xl lg:hidden">
           <div className="grid gap-4">
             {navigationItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className={`text-sm font-semibold ${
-                  isScrolled
-                    ? "text-slate-700 hover:text-[var(--color-blue)]"
-                    : "text-white/80 hover:text-[var(--color-accent)]"
-                }`}
+                className="text-sm font-semibold text-white/80 transition hover:text-[var(--color-accent)]"
               >
                 {item.label}
               </a>
