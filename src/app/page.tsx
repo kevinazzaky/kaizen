@@ -1,12 +1,15 @@
-import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
-import { AboutSection } from "@/components/sections/AboutSection";
-import { BenefitsSection } from "@/components/sections/BenefitsSection";
-import { ContactSection } from "@/components/sections/ContactSection";
-import { GallerySection } from "@/components/sections/GallerySection";
+import { Footer } from "@/components/layout/Footer";
+
 import { HeroSection } from "@/components/sections/HeroSection";
-import { ServiceAreaSection } from "@/components/sections/ServiceAreaSection";
-import { ServicesSection } from "@/components/sections/ServicesSection";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { VisionMissionSection } from "@/components/sections/VisionMissionSection";
+import { WhatWeDoSection } from "@/components/sections/WhatWeDoSection";
+import { ClientSection } from "@/components/sections/ClientSection";
+import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
+import { ProjectSection } from "@/components/sections/ProjectSection";
+import { EquipmentCoverageSection } from "@/components/sections/EquipmentCoverageSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
@@ -14,10 +17,12 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutSection />
-      <ServicesSection />
-      <BenefitsSection />
-      <ServiceAreaSection />
-      <GallerySection />
+      <VisionMissionSection />
+      <WhatWeDoSection />
+      <ClientSection />
+      <WhyChooseUsSection />
+      <ProjectSection />
+      <EquipmentCoverageSection />
       <ContactSection />
       <Footer />
     </main>
