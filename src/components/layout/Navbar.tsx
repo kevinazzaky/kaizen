@@ -1,103 +1,135 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { company } from "@/constants/company";
 import { navigationItems } from "@/constants/navigation";
+import { createWhatsappLink } from "@/lib/whatsapp";
 
 export function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const whatsappUrl = `https://wa.me/${company.whatsappNumber}?text=${encodeURIComponent(
-    company.whatsappMessage
-  )}`;
+  const whatsappLink = createWhatsappLink(
+    company.whatsappNumber,
+    company.whatsappMessage,
+  );
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  useEffect(() => {
+    function handleScroll() {
+      setIsScrolled(window.scrollY > 30);
+    }
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link
-          href="#home"
-          onClick={closeMenu}
-          className="flex items-center gap-3"
-          aria-label="Kaizen homepage"
-        >
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-sm font-bold text-white">
-            K
+    <header className="fixed left-0 top-0 z-50 w-full px-4 pt-4">
+      <div
+        className={`mx-auto flex h-18 max-w-7xl items-center justify-between rounded-full border px-5 shadow-sm backdrop-blur-2xl transition-all duration-300 sm:px-6 ${
+          isScrolled
+            ? "border-slate-200/70 bg-white/75 text-slate-950"
+            : "border-white/15 bg-white/10 text-white"
+        }`}
+      >
+        <a href="#" className="flex items-center gap-3">
+          <div className="relative h-11 w-11 overflow-hidden rounded-full bg-black shadow-sm">
+            <Image
+              src={company.logo}
+              alt={company.name}
+              fill
+              className="object-contain p-1"
+              priority
+            />
           </div>
 
-          <div className="leading-tight">
-            <p className="text-lg font-bold text-slate-900">{company.name}</p>
-            <p className="hidden text-xs text-slate-500 sm:block">
-              Kitchen Equipment Maintenance
+          <div>
+            <p className="text-sm font-black leading-none sm:text-base">
+              {company.name}
+            </p>
+            <p
+              className={`mt-1 hidden text-xs sm:block ${
+                isScrolled ? "text-slate-500" : "text-white/65"
+              }`}
+            >
+              Kitchen Equipment Specialist
             </p>
           </div>
-        </Link>
+        </a>
 
-        <div className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {navigationItems.map((item) => (
-            <Link
+            <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-slate-700 transition hover:text-slate-950"
+              className={`text-sm font-semibold transition ${
+                isScrolled
+                  ? "text-slate-600 hover:text-[var(--color-blue)]"
+                  : "text-white/75 hover:text-[var(--color-accent)]"
+              }`}
             >
               {item.label}
-            </Link>
+            </a>
           ))}
-        </div>
+        </nav>
 
-        <div className="hidden lg:block">
-          <Link
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-700"
-          >
-            Konsultasi WhatsApp
-          </Link>
-        </div>
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden rounded-full bg-[var(--color-accent)] px-5 py-2.5 text-sm font-black text-[var(--color-primary)] shadow-sm transition hover:-translate-y-0.5 hover:bg-yellow-300 lg:inline-flex"
+        >
+          Konsultasi
+        </a>
 
         <button
           type="button"
-          onClick={() => setIsMenuOpen((current) => !current)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 text-slate-900 transition hover:bg-slate-100 lg:hidden"
-          aria-label="Toggle navigation menu"
-          aria-expanded={isMenuOpen}
+          onClick={() => setIsOpen((current) => !current)}
+          className={`rounded-full border px-4 py-2 text-sm font-semibold transition lg:hidden ${
+            isScrolled
+              ? "border-slate-300 text-slate-950"
+              : "border-white/20 text-white"
+          }`}
         >
-          {isMenuOpen ? (
-            <span className="text-2xl leading-none">×</span>
-          ) : (
-            <span className="text-2xl leading-none">☰</span>
-          )}
+          Menu
         </button>
-      </nav>
+      </div>
 
-      {isMenuOpen && (
-        <div className="border-t border-slate-200 bg-white px-4 py-4 shadow-sm lg:hidden">
-          <div className="mx-auto flex max-w-7xl flex-col gap-2">
+      {isOpen && (
+        <div
+          className={`mx-auto mt-3 max-w-7xl rounded-3xl border px-5 py-5 shadow-lg backdrop-blur-2xl lg:hidden ${
+            isScrolled
+              ? "border-slate-200 bg-white/90 text-slate-950"
+              : "border-white/15 bg-[var(--color-primary)]/80 text-white"
+          }`}
+        >
+          <div className="grid gap-4">
             {navigationItems.map((item) => (
-              <Link
+              <a
                 key={item.href}
                 href={item.href}
-                onClick={closeMenu}
-                className="rounded-lg px-3 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-950"
+                onClick={() => setIsOpen(false)}
+                className={`text-sm font-semibold ${
+                  isScrolled
+                    ? "text-slate-700 hover:text-[var(--color-blue)]"
+                    : "text-white/80 hover:text-[var(--color-accent)]"
+                }`}
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
 
-            <Link
-              href={whatsappUrl}
+            <a
+              href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={closeMenu}
-              className="mt-2 rounded-full bg-slate-900 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-700"
+              className="rounded-full bg-[var(--color-accent)] px-5 py-3 text-center text-sm font-black text-[var(--color-primary)]"
             >
-              Konsultasi WhatsApp
-            </Link>
+              Konsultasi
+            </a>
           </div>
         </div>
       )}

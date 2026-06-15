@@ -1,32 +1,17 @@
 export const services = [
   {
-    title: "Maintenance Kitchen Equipment",
+    title: "Perawatan dan Perbaikan",
     description:
-      "Perawatan dan pengecekan berkala untuk menjaga performa alat kitchen agar tetap aman, bersih, stabil, dan siap digunakan dalam operasional harian.",
+      "Kami menangani preventive maintenance, corrective maintenance, dan overhaul unit untuk menjaga performa kitchen equipment tetap optimal, mengurangi downtime, serta memperpanjang umur pakai aset dapur pelanggan.",
   },
   {
-    title: "Perbaikan Alat Kitchen",
+    title: "Pengadaan dan Pasokan Spare Part",
     description:
-      "Layanan perbaikan alat kitchen yang mengalami kendala seperti tidak panas, tidak menyala, bocor, error, atau tidak bekerja secara optimal.",
+      "Kami menyediakan suku cadang orisinal dari berbagai merek kitchen equipment, dilengkapi dengan dukungan konsultasi teknis agar spare part yang digunakan sesuai kebutuhan unit.",
   },
   {
-    title: "Pengadaan Spare Part",
+    title: "Pengadaan Unit Baru dan Instalasi",
     description:
-      "Membantu kebutuhan spare part kitchen equipment, mulai dari pengecekan kebutuhan part, pencarian part yang sesuai, hingga penggantian pada alat.",
-  },
-  {
-    title: "Pengadaan Barang Kitchen",
-    description:
-      "Membantu penyediaan barang atau equipment kitchen untuk kebutuhan restoran, hotel, cafe, catering, cloud kitchen, dan commercial kitchen.",
-  },
-  {
-    title: "Troubleshooting Equipment",
-    description:
-      "Pengecekan awal untuk mencari penyebab kerusakan atau penurunan performa pada equipment sebelum dilakukan perbaikan lebih lanjut.",
-  },
-  {
-    title: "Preventive Maintenance",
-    description:
-      "Program perawatan terjadwal untuk mengurangi risiko kerusakan mendadak dan membantu memperpanjang umur pakai kitchen equipment.",
+      "Kami melayani pengadaan kitchen equipment komersial baru, instalasi, commissioning, dan uji coba di lokasi agar unit siap digunakan sesuai standar pabrikan.",
   },
 ];

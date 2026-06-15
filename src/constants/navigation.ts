@@ -1,22 +1,34 @@
 export const navigationItems = [
   {
-    label: "Home",
-    href: "#home",
+    label: "About",
+    href: "#about",
   },
   {
-    label: "Tentang Kami",
-    href: "#tentang-kami",
+    label: "Vision",
+    href: "#vision",
   },
   {
-    label: "Layanan",
-    href: "#layanan",
+    label: "Services",
+    href: "#services",
   },
   {
-    label: "Galeri",
-    href: "#galeri",
+    label: "Clients",
+    href: "#clients",
   },
   {
-    label: "Kontak",
-    href: "#kontak",
+    label: "Why Us",
+    href: "#why-us",
+  },
+  {
+    label: "Project",
+    href: "#projects",
+  },
+  {
+    label: "Equipment",
+    href: "#equipment",
+  },
+  {
+    label: "Contact",
+    href: "#contact",
   },
 ];
