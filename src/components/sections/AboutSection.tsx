@@ -10,7 +10,7 @@ export function AboutSection() {
           <SectionHeading
             label="About Us"
             title="Mitra Teknis untuk Keandalan Kitchen Equipment"
-            description="Kaizen Utama Teknik hadir untuk mendukung operasional bisnis kuliner melalui layanan teknis yang responsif, tepat sasaran, dan berorientasi jangka panjang."
+            description="Kaizen Utama Teknik hadir untuk mendukung operasional bisnis anda melalui layanan teknis yang responsif, tepat sasaran, dan berorientasi jangka panjang."
           />
 
           <div className="card-soft rounded-[2rem] p-7">
@@ -44,7 +44,7 @@ export function AboutSection() {
                   Bali
                 </p>
                 <p className="mt-2 text-sm text-slate-600">
-                  Berbasis di Badung dan melayani kebutuhan bisnis kuliner.
+                  Berbasis di Badung dan melayani kebutuhan bisnis Anda.
                 </p>
               </div>
             </div>

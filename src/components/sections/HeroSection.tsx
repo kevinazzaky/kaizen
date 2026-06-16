@@ -108,7 +108,7 @@ export function HeroSection() {
                       Bali
                     </p>
                     <p className="mt-2 text-sm leading-6 text-slate-600">
-                      Berbasis di Badung dan mendukung kebutuhan bisnis kuliner.
+                      Berbasis di Badung dan mendukung kebutuhan bisnis Anda.
                     </p>
                   </div>
                 </div>
