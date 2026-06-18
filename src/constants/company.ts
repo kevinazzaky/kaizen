@@ -12,9 +12,9 @@ export const company = {
   email: "kaizenutamateknik@gmail.com",
 
   whatsappNumber: "6281338753038",
-  whatsappSecondNumber: "62895415514013",
+  whatsappSecondNumber: "6281529500457",
   whatsappDisplay: "0813 3875 3038",
-  whatsappSecondDisplay: "0895 41551 4013",
+  whatsappSecondDisplay: "0815 2950 0457",
   whatsappMessage:
     "Halo Kaizen Utama Teknik, saya ingin konsultasi mengenai layanan kitchen equipment.",
 
