@@ -1,38 +1,57 @@
+"use client";
+
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { advantages } from "@/constants/advantages";
+import { t, useLanguage } from "@/lib/language";
+
+const whyCopy = {
+  id: {
+    label: "Mengapa Memilih Kami",
+    title: "Alasan Memilih Kaizen Utama Teknik",
+    description:
+      "Kami tidak hanya menangani kerusakan, tetapi juga membantu pelanggan menjaga efisiensi, keandalan, dan umur pakai aset kitchen equipment secara berkelanjutan.",
+    styleLabels: ["Keahlian", "Orisinal", "Jangka Panjang", "Terpercaya"],
+  },
+  en: {
+    label: "Why Choose Us",
+    title: "Why Choose Kaizen Utama Teknik",
+    description:
+      "We do not only handle breakdowns, but also help customers maintain efficiency, reliability, and the service life of kitchen equipment assets.",
+    styleLabels: ["Expertise", "Original", "Long Term", "Reliable"],
+  },
+};
 
 const advantageStyles = [
   {
-    label: "Expertise",
     accent: "bg-[var(--color-accent)] text-[var(--color-primary)]",
     border: "hover:border-amber-300",
   },
   {
-    label: "Original",
     accent: "bg-[var(--color-blue)] text-white",
     border: "hover:border-[var(--color-blue)]",
   },
   {
-    label: "Long Term",
     accent: "bg-[var(--color-primary)] text-white",
     border: "hover:border-slate-500",
   },
   {
-    label: "Reliable",
     accent: "bg-[var(--color-accent)] text-[var(--color-primary)]",
     border: "hover:border-amber-300",
   },
 ];
 
 export function WhyChooseUsSection() {
+  const { language } = useLanguage();
+  const copy = whyCopy[language];
+
   return (
     <section id="why-us" className="bg-white py-20">
       <Container>
         <SectionHeading
-          label="Why Choose Us"
-          title="Alasan Memilih Kaizen Utama Teknik"
-          description="Kami tidak hanya menangani kerusakan, tetapi juga membantu pelanggan menjaga efisiensi, keandalan, dan umur pakai aset kitchen equipment secara berkelanjutan."
+          label={copy.label}
+          title={copy.title}
+          description={copy.description}
           align="center"
         />
 
@@ -42,7 +61,7 @@ export function WhyChooseUsSection() {
 
             return (
               <article
-                key={advantage.title}
+                key={t(advantage.title, language)}
                 className={`card-hover relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-50 p-7 shadow-sm ${style.border}`}
               >
                 <div className="absolute right-0 top-0 h-24 w-24 rounded-bl-[3rem] bg-white" />
@@ -55,15 +74,15 @@ export function WhyChooseUsSection() {
                   </div>
 
                   <p className="mt-6 text-xs font-black uppercase tracking-[0.22em] text-[var(--color-blue)]">
-                    {style.label}
+                    {copy.styleLabels[index]}
                   </p>
 
                   <h3 className="mt-3 text-xl font-black leading-tight text-slate-950">
-                    {advantage.title}
+                    {t(advantage.title, language)}
                   </h3>
 
                   <p className="mt-4 text-sm leading-7 text-slate-600">
-                    {advantage.description}
+                    {t(advantage.description, language)}
                   </p>
                 </div>
               </article>

@@ -1,34 +1,58 @@
 export const navigationItems = [
   {
-    label: "About",
+    label: {
+      id: "Tentang",
+      en: "About",
+    },
     href: "#about",
   },
   {
-    label: "Vision",
+    label: {
+      id: "Visi",
+      en: "Vision",
+    },
     href: "#vision",
   },
   {
-    label: "Services",
+    label: {
+      id: "Layanan",
+      en: "Services",
+    },
     href: "#services",
   },
   {
-    label: "Clients",
+    label: {
+      id: "Klien",
+      en: "Clients",
+    },
     href: "#clients",
   },
   {
-    label: "Why Us",
+    label: {
+      id: "Keunggulan",
+      en: "Why Us",
+    },
     href: "#why-us",
   },
   {
-    label: "Project",
+    label: {
+      id: "Proyek",
+      en: "Projects",
+    },
     href: "#projects",
   },
   {
-    label: "Equipment",
+    label: {
+      id: "Equipment",
+      en: "Equipment",
+    },
     href: "#equipment",
   },
   {
-    label: "Contact",
+    label: {
+      id: "Kontak",
+      en: "Contact",
+    },
     href: "#contact",
   },
 ];
