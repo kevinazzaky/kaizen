@@ -1,12 +1,36 @@
+"use client";
+
 import Image from "next/image";
 import { company } from "@/constants/company";
 import { navigationItems } from "@/constants/navigation";
+import { t, useLanguage } from "@/lib/language";
 import { createWhatsappLink } from "@/lib/whatsapp";
 
+const footerCopy = {
+  id: {
+    description:
+      "Solusi profesional untuk pengadaan, instalasi, perawatan, dan perbaikan kitchen equipment komersial.",
+    contactButton: "Hubungi Kami",
+    navigation: "Navigasi",
+    contact: "Kontak",
+    rights: "Seluruh hak cipta dilindungi.",
+  },
+  en: {
+    description:
+      "Professional solutions for commercial kitchen equipment procurement, installation, maintenance, and repair.",
+    contactButton: "Contact Us",
+    navigation: "Navigation",
+    contact: "Contact",
+    rights: "All rights reserved.",
+  },
+};
+
 export function Footer() {
+  const { language } = useLanguage();
+  const copy = footerCopy[language];
   const whatsappLink = createWhatsappLink(
     company.whatsappNumber,
-    company.whatsappMessage
+    t(company.whatsappMessage, language),
   );
 
   return (
@@ -32,8 +56,7 @@ export function Footer() {
           </div>
 
           <p className="mt-4 max-w-xl text-sm leading-7 text-white/60">
-            Solusi profesional untuk pengadaan, instalasi, perawatan, dan
-            perbaikan kitchen equipment komersial.
+            {copy.description}
           </p>
 
           <a
@@ -42,14 +65,14 @@ export function Footer() {
             rel="noopener noreferrer"
             className="mt-5 inline-flex rounded-full bg-[var(--color-accent)] px-5 py-2.5 text-sm font-bold text-[var(--color-primary)] transition hover:bg-yellow-300"
           >
-            Hubungi Kami
+            {copy.contactButton}
           </a>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/35">
-              Navigation
+              {copy.navigation}
             </p>
 
             <div className="mt-4 grid gap-3">
@@ -59,7 +82,7 @@ export function Footer() {
                   href={item.href}
                   className="text-sm text-white/60 transition hover:text-[var(--color-blue)]"
                 >
-                  {item.label}
+                  {item.label[language]}
                 </a>
               ))}
             </div>
@@ -67,7 +90,7 @@ export function Footer() {
 
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/35">
-              Contact
+              {copy.contact}
             </p>
 
             <div className="mt-4 grid gap-3 text-sm text-white/60">
@@ -78,10 +101,7 @@ export function Footer() {
                 {company.email}
               </a>
 
-              <a
-                href={whatsappLink}
-                className="hover:text-[var(--color-blue)]"
-              >
+              <a href={whatsappLink} className="hover:text-[var(--color-blue)]">
                 {company.whatsappDisplay}
               </a>
 
@@ -92,7 +112,7 @@ export function Footer() {
       </div>
 
       <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 px-5 pt-6 text-sm text-white/40 sm:px-6 lg:px-8">
-        © 2025 {company.name}. All rights reserved.
+        &copy; 2025 {company.name}. {copy.rights}
       </div>
     </footer>
   );

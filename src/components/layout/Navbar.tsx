@@ -4,15 +4,28 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { company } from "@/constants/company";
 import { navigationItems } from "@/constants/navigation";
+import { t, useLanguage, type Language } from "@/lib/language";
 import { createWhatsappLink } from "@/lib/whatsapp";
+
+const languageOptions: { value: Language; label: string }[] = [
+  {
+    value: "id",
+    label: "ID",
+  },
+  {
+    value: "en",
+    label: "EN",
+  },
+];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { language, setLanguage } = useLanguage();
 
   const whatsappLink = createWhatsappLink(
     company.whatsappNumber,
-    company.whatsappMessage,
+    t(company.whatsappMessage, language),
   );
 
   useEffect(() => {
@@ -76,19 +89,48 @@ export function Navbar() {
                   : "text-white/75 hover:text-[var(--color-accent)]"
               }`}
             >
-              {item.label}
+              {item.label[language]}
             </a>
           ))}
         </nav>
 
-        <a
-          href={whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden rounded-full bg-[var(--color-accent)] px-5 py-2.5 text-sm font-black text-[var(--color-primary)] shadow-sm transition hover:-translate-y-0.5 hover:bg-yellow-300 lg:inline-flex"
-        >
-          Konsultasi
-        </a>
+        <div className="hidden items-center gap-3 lg:flex">
+          <div
+            className={`flex rounded-full border p-1 ${
+              isScrolled
+                ? "border-slate-200 bg-white/80"
+                : "border-white/15 bg-white/10"
+            }`}
+            aria-label="Language selector"
+          >
+            {languageOptions.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => setLanguage(option.value)}
+                className={`h-8 min-w-10 rounded-full px-3 text-xs font-black transition ${
+                  language === option.value
+                    ? "bg-[var(--color-accent)] text-[var(--color-primary)] shadow-sm"
+                    : isScrolled
+                      ? "text-slate-600 hover:text-slate-950"
+                      : "text-white/70 hover:text-white"
+                }`}
+                aria-pressed={language === option.value}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-[var(--color-accent)] px-5 py-2.5 text-sm font-black text-[var(--color-primary)] shadow-sm transition hover:-translate-y-0.5 hover:bg-yellow-300"
+          >
+            {language === "id" ? "Konsultasi" : "Consultation"}
+          </a>
+        </div>
 
         <button
           type="button"
@@ -109,9 +151,27 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="text-sm font-semibold text-white/80 transition hover:text-[var(--color-accent)]"
               >
-                {item.label}
+                {item.label[language]}
               </a>
             ))}
+
+            <div className="flex rounded-full border border-white/15 bg-white/10 p-1">
+              {languageOptions.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => setLanguage(option.value)}
+                  className={`h-9 flex-1 rounded-full px-3 text-xs font-black transition ${
+                    language === option.value
+                      ? "bg-[var(--color-accent)] text-[var(--color-primary)]"
+                      : "text-white/70"
+                  }`}
+                  aria-pressed={language === option.value}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
 
             <a
               href={whatsappLink}
@@ -119,7 +179,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-accent)] px-5 py-3 text-center text-sm font-black text-[var(--color-primary)]"
             >
-              Konsultasi
+              {language === "id" ? "Konsultasi" : "Consultation"}
             </a>
           </div>
         </div>

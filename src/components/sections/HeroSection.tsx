@@ -1,19 +1,53 @@
+"use client";
+
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { company } from "@/constants/company";
+import { t, useLanguage } from "@/lib/language";
 import { createWhatsappLink } from "@/lib/whatsapp";
 
+const heroCopy = {
+  id: {
+    label: "Company Profile",
+    intro:
+      "Kami membantu menjaga performa peralatan dapur agar tetap optimal, efisien, dan siap mendukung operasional harian.",
+    primaryCta: "Konsultasi Sekarang",
+    secondaryCta: "Lihat Layanan",
+    cardTitle: "Mitra Teknis Kitchen Equipment Komersial",
+    market:
+      "Restoran, hotel, cafe, resort, catering, bakery, dan cloud kitchen.",
+    location: "Berbasis di Badung dan mendukung kebutuhan bisnis Anda.",
+    highlights: [
+      "Preventive Maintenance",
+      "Pasokan Spare Part",
+      "Instalasi & Perbaikan",
+    ],
+  },
+  en: {
+    label: "Company Profile",
+    intro:
+      "We help keep kitchen equipment performing optimally, efficiently, and ready to support daily operations.",
+    primaryCta: "Consult Now",
+    secondaryCta: "View Services",
+    cardTitle: "Technical Partner for Commercial Kitchen Equipment",
+    market:
+      "Restaurants, hotels, cafes, resorts, catering, bakeries, and cloud kitchens.",
+    location: "Based in Badung and ready to support your business needs.",
+    highlights: [
+      "Preventive Maintenance",
+      "Spare Part Supply",
+      "Installation & Repair",
+    ],
+  },
+};
+
 export function HeroSection() {
+  const { language } = useLanguage();
+  const copy = heroCopy[language];
   const whatsappLink = createWhatsappLink(
     company.whatsappNumber,
-    company.whatsappMessage,
+    t(company.whatsappMessage, language),
   );
-
-  const highlights = [
-    "Preventive Maintenance",
-    "Spare Part Supply",
-    "Installation & Repair",
-  ];
 
   return (
     <section className="relative overflow-hidden pt-28 text-white dark-pattern">
@@ -23,16 +57,15 @@ export function HeroSection() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <p className="mb-5 inline-flex rounded-full border border-[var(--color-accent)]/25 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent)]">
-              Company Profile
+              {copy.label}
             </p>
 
             <h1 className="max-w-4xl text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-              {company.tagline}
+              {t(company.tagline, language)}
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
-              Kami membantu menjaga performa peralatan dapur agar tetap optimal,
-              efisien, dan siap mendukung operasional harian.
+              {copy.intro}
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -42,19 +75,19 @@ export function HeroSection() {
                 rel="noopener noreferrer"
                 className="rounded-full bg-[var(--color-accent)] px-7 py-3 text-center text-sm font-black text-[var(--color-primary)] shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-yellow-300"
               >
-                Konsultasi Sekarang
+                {copy.primaryCta}
               </a>
 
               <a
                 href="#services"
                 className="rounded-full border border-white/20 bg-white/5 px-7 py-3 text-center text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
               >
-                Lihat Layanan
+                {copy.secondaryCta}
               </a>
             </div>
 
             <div className="mt-10 grid gap-3 sm:grid-cols-3">
-              {highlights.map((item) => (
+              {copy.highlights.map((item) => (
                 <div
                   key={item}
                   className="rounded-2xl border border-white/10 bg-white/10 px-4 py-4 backdrop-blur"
@@ -85,11 +118,11 @@ export function HeroSection() {
                 </p>
 
                 <h2 className="mt-4 text-2xl font-black leading-tight text-slate-950 sm:text-3xl">
-                  Mitra Teknis Kitchen Equipment Komersial
+                  {copy.cardTitle}
                 </h2>
 
                 <p className="mt-4 text-sm leading-7 text-slate-600">
-                  {company.description}
+                  {t(company.description, language)}
                 </p>
 
                 <div className="mt-7 grid gap-4 sm:grid-cols-2">
@@ -98,8 +131,7 @@ export function HeroSection() {
                       F&B
                     </p>
                     <p className="mt-2 text-sm leading-6 text-slate-600">
-                      Restoran, hotel, café, resort, catering, bakery, dan cloud
-                      kitchen.
+                      {copy.market}
                     </p>
                   </div>
 
@@ -108,7 +140,7 @@ export function HeroSection() {
                       Bali
                     </p>
                     <p className="mt-2 text-sm leading-6 text-slate-600">
-                      Berbasis di Badung dan mendukung kebutuhan bisnis Anda.
+                      {copy.location}
                     </p>
                   </div>
                 </div>

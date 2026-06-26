@@ -1,17 +1,46 @@
+"use client";
+
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { company } from "@/constants/company";
+import { t, useLanguage } from "@/lib/language";
 import { createWhatsappLink } from "@/lib/whatsapp";
 
+const contactCopy = {
+  id: {
+    label: "Kontak Kami",
+    title: "Butuh Bantuan untuk Kitchen Equipment Anda?",
+    description:
+      "Hubungi Kaizen Utama Teknik untuk konsultasi pengadaan, instalasi, perawatan, perbaikan, atau kebutuhan spare part kitchen equipment komersial.",
+    primaryWhatsapp: "WhatsApp Utama",
+    secondaryWhatsapp: "WhatsApp Alternatif",
+    email: "Email Kami",
+    address: "Alamat",
+  },
+  en: {
+    label: "Contact Us",
+    title: "Need Help with Your Kitchen Equipment?",
+    description:
+      "Contact Kaizen Utama Teknik for procurement, installation, maintenance, repair, or commercial kitchen equipment spare part consultation.",
+    primaryWhatsapp: "Primary WhatsApp",
+    secondaryWhatsapp: "Alternative WhatsApp",
+    email: "Email Us",
+    address: "Address",
+  },
+};
+
 export function ContactSection() {
+  const { language } = useLanguage();
+  const copy = contactCopy[language];
+  const whatsappMessage = t(company.whatsappMessage, language);
   const primaryWhatsapp = createWhatsappLink(
     company.whatsappNumber,
-    company.whatsappMessage,
+    whatsappMessage,
   );
 
   const secondaryWhatsapp = createWhatsappLink(
     company.whatsappSecondNumber,
-    company.whatsappMessage,
+    whatsappMessage,
   );
 
   return (
@@ -21,9 +50,9 @@ export function ContactSection() {
           <div className="grid gap-0 lg:grid-cols-[1fr_0.9fr]">
             <div className="p-8 text-white sm:p-10 lg:p-12">
               <SectionHeading
-                label="Contact Us"
-                title="Butuh Bantuan untuk Kitchen Equipment Anda?"
-                description="Hubungi Kaizen Utama Teknik untuk konsultasi pengadaan, instalasi, perawatan, perbaikan, atau kebutuhan spare part kitchen equipment komersial."
+                label={copy.label}
+                title={copy.title}
+                description={copy.description}
                 dark
               />
 
@@ -34,14 +63,14 @@ export function ContactSection() {
                   rel="noopener noreferrer"
                   className="rounded-full bg-[var(--color-accent)] px-6 py-3 text-center text-sm font-black text-[var(--color-primary)] transition hover:-translate-y-0.5 hover:bg-yellow-300"
                 >
-                  WhatsApp Utama
+                  {copy.primaryWhatsapp}
                 </a>
 
                 <a
                   href={`mailto:${company.email}`}
                   className="rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
                 >
-                  Email Kami
+                  {copy.email}
                 </a>
               </div>
             </div>
@@ -50,7 +79,7 @@ export function ContactSection() {
               <div className="grid gap-6">
                 <div className="rounded-2xl bg-[var(--color-blue-soft)] p-5">
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-blue)]">
-                    WhatsApp Utama
+                    {copy.primaryWhatsapp}
                   </p>
                   <a
                     href={primaryWhatsapp}
@@ -64,7 +93,7 @@ export function ContactSection() {
 
                 <div className="rounded-2xl bg-[var(--color-accent-soft)] p-5">
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-600">
-                    WhatsApp Alternatif
+                    {copy.secondaryWhatsapp}
                   </p>
                   <a
                     href={secondaryWhatsapp}
@@ -78,7 +107,7 @@ export function ContactSection() {
 
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-blue)]">
-                    Email
+                    {copy.email}
                   </p>
                   <a
                     href={`mailto:${company.email}`}
@@ -90,7 +119,7 @@ export function ContactSection() {
 
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-blue)]">
-                    Alamat
+                    {copy.address}
                   </p>
                   <p className="mt-2 text-sm leading-7 text-slate-600">
                     {company.address}

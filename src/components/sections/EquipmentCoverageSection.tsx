@@ -1,6 +1,24 @@
+"use client";
+
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { equipmentCategories } from "@/constants/equipment";
+import { t, useLanguage } from "@/lib/language";
+
+const equipmentCopy = {
+  id: {
+    label: "Cakupan Equipment",
+    title: "Kitchen Equipment yang Kami Tangani",
+    description:
+      "Kaizen Utama Teknik menangani berbagai jenis kitchen equipment komersial untuk mendukung kebutuhan operasional restoran, hotel, cafe, resort, catering, bakery, cloud kitchen, dan bisnis F&B lainnya.",
+  },
+  en: {
+    label: "Equipment Coverage",
+    title: "Kitchen Equipment We Handle",
+    description:
+      "Kaizen Utama Teknik handles various types of commercial kitchen equipment to support restaurants, hotels, cafes, resorts, catering, bakeries, cloud kitchens, and other F&B businesses.",
+  },
+};
 
 const equipmentStyles = [
   {
@@ -21,13 +39,16 @@ const equipmentStyles = [
 ];
 
 export function EquipmentCoverageSection() {
+  const { language } = useLanguage();
+  const copy = equipmentCopy[language];
+
   return (
     <section id="equipment" className="section-pattern py-20">
       <Container>
         <SectionHeading
-          label="Equipment Coverage"
-          title="Kitchen Equipment yang Kami Tangani"
-          description="Kaizen Utama Teknik menangani berbagai jenis kitchen equipment komersial untuk mendukung kebutuhan operasional restoran, hotel, café, resort, catering, bakery, cloud kitchen, dan bisnis F&B lainnya."
+          label={copy.label}
+          title={copy.title}
+          description={copy.description}
           align="center"
         />
 
@@ -37,7 +58,7 @@ export function EquipmentCoverageSection() {
 
             return (
               <article
-                key={equipment.title}
+                key={t(equipment.title, language)}
                 className={`card-hover group relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-sm ${style.border}`}
               >
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[var(--color-blue)] via-[var(--color-accent)] to-[var(--color-primary)] opacity-70" />
@@ -51,20 +72,20 @@ export function EquipmentCoverageSection() {
                 </div>
 
                 <h3 className="text-xl font-black text-slate-950">
-                  {equipment.title}
+                  {t(equipment.title, language)}
                 </h3>
 
                 <p className="mt-3 text-sm leading-7 text-slate-600">
-                  {equipment.description}
+                  {t(equipment.description, language)}
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-2">
                   {equipment.items.map((item) => (
                     <span
-                      key={item}
+                      key={t(item, language)}
                       className={`rounded-full px-3 py-1.5 text-xs font-bold ${style.badge}`}
                     >
-                      {item}
+                      {t(item, language)}
                     </span>
                   ))}
                 </div>
