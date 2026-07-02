@@ -49,7 +49,9 @@ export function ClientSection() {
                     src={client.image}
                     alt={client.name}
                     fill
-                    className="object-contain p-6"
+                    className={`object-contain p-6 ${
+                      client.image.includes("renaissance") ? "invert" : ""
+                    }`}
                     sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
                   />
                 ) : (
